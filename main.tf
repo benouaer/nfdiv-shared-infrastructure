@@ -45,3 +45,23 @@ resource "azurerm_application_insights" "appinsights" {
     ]
   }
 }
+
+resource "azurerm_monitor_action_group" "Fact44" {
+  name                = "CriticalAlertsAction"
+  resource_group_name = azurerm_resource_group.rg.name
+  short_name          = "p0action"
+
+  email_receiver {
+    name          = "sendtoadmin"
+    email_address = "damon.green@hmcts.net"
+  }
+
+
+  logic_app_receiver {
+    name                    = "Fact-Slack-App"
+    resource_id             = "subscriptions/1c4f0704-a29e-403d-b719-b90c34ef14c9/resourceGroups/fact-demo/providers/Microsoft.Logic/workflows/Fact-Slack-App/logicApp"
+    callback_url            = "https://logicapptriggerurl/..."
+    use_common_alert_schema = false
+  }
+
+}
