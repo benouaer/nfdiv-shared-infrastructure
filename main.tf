@@ -46,7 +46,7 @@ resource "azurerm_application_insights" "appinsights" {
   }
 }
 
-resource "azurerm_monitor_action_group" "Fact44" {
+resource "azurerm_monitor_action_group" "Ndiv44" {
   name                = "CriticalAlertsAction"
   resource_group_name = azurerm_resource_group.rg.name
   short_name          = "p0action"
@@ -58,9 +58,9 @@ resource "azurerm_monitor_action_group" "Fact44" {
 
 
   logic_app_receiver {
-    name                    = "Fact-Slack-App"
-    resource_id             = "subscriptions/1c4f0704-a29e-403d-b719-b90c34ef14c9/resourceGroups/fact-demo/providers/Microsoft.Logic/workflows/Fact-Slack-App/logicApp"
-    callback_url            = "https://prod-23.uksouth.logic.azure.com:443/workflows/a1e8611104834bd992754913beb75636/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=qLf0nWJs_8n3T3jLKl2pivAIUk-GJfEllvx9dMfXwLE"
+    name                    = "Nfdiv-URL"
+    resource_id             = "subscriptions/1c4f0704-a29e-403d-b719-b90c34ef14c9/resourcegroups/nfdiv-demo/providers/Microsoft.Logic/workflows/Nfdiv-URL/logicApp"
+    callback_url            = "https://prod-00.uksouth.logic.azure.com:443/workflows/92968083557f446bb6acff64ea3afa69/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=FWSXTSNydGuxnZy9q_34_QDp1IIsZeP8yRdpCmLOKc8"
     use_common_alert_schema = false
   }
 
