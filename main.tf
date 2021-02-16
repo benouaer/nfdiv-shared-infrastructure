@@ -60,7 +60,7 @@ resource "azurerm_monitor_action_group" "Fact44" {
   logic_app_receiver {
     name                    = "Fact-Slack-App"
     resource_id             = "subscriptions/1c4f0704-a29e-403d-b719-b90c34ef14c9/resourceGroups/fact-demo/providers/Microsoft.Logic/workflows/Fact-Slack-App/logicApp"
-    callback_url            = "https://logicapptriggerurl/..."
+    callback_url            = "https://prod-23.uksouth.logic.azure.com:443/workflows/a1e8611104834bd992754913beb75636/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=qLf0nWJs_8n3T3jLKl2pivAIUk-GJfEllvx9dMfXwLE"
     use_common_alert_schema = false
   }
 
