@@ -47,9 +47,9 @@ resource "azurerm_application_insights" "appinsights" {
 }
 
 resource "azurerm_monitor_action_group" "Ndiv44" {
-  name                = "CriticalAlertsAction"
+  name                = "nfdiv-ag"
   resource_group_name = azurerm_resource_group.rg.name
-  short_name          = "p0action"
+  short_name          = "nfdiv-p1action"
 
   email_receiver {
     name          = "sendtoadmin"
