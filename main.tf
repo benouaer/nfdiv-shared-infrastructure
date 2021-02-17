@@ -70,7 +70,7 @@ resource "azurerm_application_insights_web_test" "Nfdiv33" {
   name                    = "tf-test-appinsights-webtest"
   location                = var.appinsights_location
   resource_group_name     = azurerm_resource_group.rg.name
-  application_insights_id = azurerm_application_insights.id
+  application_insights_id = azurerm_application_insights.appinsights.id
   kind                    = "ping"
   frequency               = 300
   timeout                 = 60
@@ -83,6 +83,6 @@ resource "azurerm_application_insights_web_test" "Nfdiv33" {
     <Request Method="GET" Guid="a5f10126-e4cd-570d-961c-cea43999a200" Version="1.1" Url="https://apply-for-divorce.service.gov.uk/" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="200" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False" />
   </Items>
 </WebTest>
-XML
+XML>>
 
 }
