@@ -93,3 +93,20 @@ output "webtest_id" {
 output "webtests_synthetic_id" {
   value = azurerm_application_insights_web_test.Nfdiv33.synthetic_monitor_id
 }
+
+resource "azurerm_monitor_action_rule_action_group" "example" {
+  name                = "coded-rule"
+  resource_group_name = azurerm_resource_group.rg.name
+  action_group_id     = azurerm_monitor_action_group.appinsights.id
+  enabled                 = true
+
+
+  scope {
+    type         = "ResourceGroup"
+    resource_ids = [azurerm_resource_group.rg.id]
+  }
+
+  tags = {
+    foo = "bar"
+  }
+}
