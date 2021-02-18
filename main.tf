@@ -86,3 +86,10 @@ resource "azurerm_application_insights_web_test" "Nfdiv33" {
 XML
 
 }
+output "webtest_id" {
+  value = azurerm_application_insights_web_test.Nfdiv33.id
+}
+
+output "webtests_synthetic_id" {
+  value = azurerm_application_insights_web_test.Nfdiv33.synthetic_monitor_id
+}
