@@ -111,7 +111,7 @@ resource "azurerm_monitor_action_rule_action_group" "appinsights" {
   }
 }
 
-resource "azurerm_application_insights_web_test" "appinsights" {
+resource "azurerm_application_insights_web_test" "appinsights-2" {
   name = "manual2-test"
   location = var.appinsights_location
   resource_group_name = azurerm_resource_group.rg.name
