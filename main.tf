@@ -105,13 +105,7 @@ resource "azurerm_monitor_action_rule_action_group" "appinsights" {
     type         = "ResourceGroup"
     resource_ids = [azurerm_resource_group.rg.id]
   }
-  action {
-    action_group_id = "${azurerm_monitor_action_group.appinsights.id}"
 
-    webhook_properties = {
-      from = "terraform"
-    }
-  }
   tags = {
     foo = "bar"
   }
