@@ -120,6 +120,7 @@ resource "azurerm_application_insights_web_test" "appinsights-2" {
   frequency = 300
   timeout = 60
   enabled = true
+  retry_enabled = true
   geo_locations = [
     "emea-se-sto-edge",
     "apac-sg-sin-azr",
