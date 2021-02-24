@@ -128,5 +128,25 @@ resource "azurerm_application_insights_web_test" "appinsights-2" {
     "emea-gb-db3-azr",
     "emea-ru-msa-edge"]
 
-  configuration = "<WebTest         Name=\"manual1-dg\"         Id=\"2723c2f5-fa3a-4ac2-832c-8444bd8f8da5\"         Enabled=\"True\"         CssProjectStructure=\"\"         CssIteration=\"\"         Timeout=\"120\"         WorkItemIds=\"\"         xmlns=\"http://microsoft.com/schemas/VisualStudio/TeamTest/2010\"         Description=\"\"         CredentialUserName=\"\"         CredentialPassword=\"\"         PreAuthenticate=\"True\"         Proxy=\"default\"         StopOnError=\"False\"         RecordedResultFile=\"\"         ResultsLocale=\"\">        <Items>        <Request         Method=\"GET\"         Guid=\"a5eb315b-d699-bdd6-e527-43120955cb86\"         Version=\"1.1\"         Url=\"http://www.google.com\"         ThinkTime=\"0\"         Timeout=\"120\"         ParseDependentRequests=\"False\"         FollowRedirects=\"True\"         RecordResult=\"True\"         Cache=\"False\"         ResponseTimeGoal=\"0\"         Encoding=\"utf-8\"         ExpectedHttpStatusCode=\"200\"         ExpectedResponseUrl=\"\"         ReportingName=\"\"         IgnoreHttpStatusCode=\"False\" />        </Items>        </WebTest>"
+  configuration = "<WebTest Name=\"manual1-dg\" Id=\"2723c2f5-fa3a-4ac2-832c-8444bd8f8da5\" Enabled=\"True\"   CssProjectStructure=\"\"         CssIteration=\"\"         Timeout=\"120\"         WorkItemIds=\"\"         xmlns=\"http://microsoft.com/schemas/VisualStudio/TeamTest/2010\"         Description=\"\"         CredentialUserName=\"\"         CredentialPassword=\"\"         PreAuthenticate=\"True\"         Proxy=\"default\"         StopOnError=\"False\"         RecordedResultFile=\"\"         ResultsLocale=\"\">        <Items>        <Request         Method=\"GET\"         Guid=\"a5eb315b-d699-bdd6-e527-43120955cb86\"         Version=\"1.1\"         Url=\"http://www.google.com\"         ThinkTime=\"0\"         Timeout=\"120\"         ParseDependentRequests=\"False\"         FollowRedirects=\"True\"         RecordResult=\"True\"         Cache=\"False\"         ResponseTimeGoal=\"0\"         Encoding=\"utf-8\"         ExpectedHttpStatusCode=\"200\"         ExpectedResponseUrl=\"\"         ReportingName=\"\"         IgnoreHttpStatusCode=\"False\" />        </Items>        </WebTest>"
+}
+
+
+resource "azurerm_monitor_metric_alert" "appinsights" {
+  name                = "nfdiv-metricalert1"
+  location = var.appinsights_location
+  resource_group_name = azurerm_resource_group.rg.name
+
+  scopes              = azurerm_resource_group.rg.id
+  description         = "Action will be triggered when count is less than 90%"
+
+  application_insights_web_test_location_availability_criteria {
+    web_test_id = application_insights_web_test.appinsights-2.id
+    component_id = azurerm_application_insights.appinsights.id
+    failed_location_count = 2
+  }
+
+  action {
+  action_group_id = azurerm_monitor_action_group.appinsights.id
+  }
 }
