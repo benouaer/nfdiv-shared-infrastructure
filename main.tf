@@ -134,7 +134,6 @@ resource "azurerm_application_insights_web_test" "appinsights-2" {
 
 resource "azurerm_monitor_metric_alert" "appinsights" {
   name                = "nfdiv-metricalert1"
-  location = var.appinsights_location
   resource_group_name = azurerm_resource_group.rg.name
 
   scopes              = azurerm_resource_group.rg.id
