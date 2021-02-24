@@ -141,7 +141,7 @@ resource "azurerm_monitor_metric_alert" "appinsights" {
   description         = "Action will be triggered when count is less than 90%"
 
   application_insights_web_test_location_availability_criteria {
-    web_test_id = application_insights_web_test.appinsights.id
+    web_test_id = azurerm_application_insights_web_test.appinsights.id
     component_id = azurerm_application_insights.appinsights.id
     failed_location_count = 2
   }
