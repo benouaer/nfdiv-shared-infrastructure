@@ -135,7 +135,7 @@ resource "azurerm_application_insights_web_test" "appinsights-2" {
 resource "azurerm_monitor_metric_alert" "appinsights" {
   name                = "nfdiv-metricalert1"
   resource_group_name = azurerm_resource_group.rg.name
-  scopes              = "/subscriptions/1c4f0704-a29e-403d-b719-b90c34ef14c9/resourceGroups/nfdiv-demo/providers/Microsoft.Insights/webtests/manual2-test"
+  scopes              = ["/subscriptions/1c4f0704-a29e-403d-b719-b90c34ef14c9/resourceGroups/nfdiv-demo/providers/Microsoft.Insights/webtests/manual2-test"]
   description         = "Action will be triggered when count is less than 90%"
 
   application_insights_web_test_location_availability_criteria {
